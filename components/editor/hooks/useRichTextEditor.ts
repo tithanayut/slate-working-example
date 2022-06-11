@@ -1,17 +1,16 @@
 import { useState } from "react";
-import { Content } from "../types";
-import { initialValue } from "../constants";
+import { Descendant } from "slate";
 
-const useRichTextEditor = () => {
-  const [content, setContentState] = useState<Content>(initialValue);
+const useRichTextEditor = (initialValue: Descendant[]) => {
+  const [content, setContent] = useState<Descendant[]>(initialValue);
 
-  const setContent = (newContent: Content) => {
-    setContentState(newContent);
+  const onContentChange = (newContent: Descendant[]) => {
+    setContent(newContent);
   };
 
   return {
     content,
-    setContent,
+    onContentChange,
   };
 };
 

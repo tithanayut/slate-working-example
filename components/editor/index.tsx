@@ -1,21 +1,21 @@
 import React, { useCallback, useMemo } from "react";
 import isHotkey from "is-hotkey";
-import { createEditor } from "slate";
+import { createEditor, Descendant } from "slate";
 import { Editable, withReact, Slate, ReactEditor } from "slate-react";
 import { withHistory } from "slate-history";
 
 import { Toolbar } from "./components/ui";
 import { MarkButton, BlockButton } from "./components/buttons";
 import { Element, ElementProps, Leaf, LeafProps } from "./components/renderers";
-import { HOTKEYS, initialValue } from "./constants";
+import { HOTKEYS, blankValue } from "./constants";
 import { toggleMark } from "./utils/mark";
-import { Content } from "./types";
 
 interface RichTextEditorProps {
-  onContentChange: (newContent: Content) => void;
+  initialValue?: Descendant[];
+  onContentChange: (newContent: Descendant[]) => void;
 }
 
-const RichTextEditor: React.FC<RichTextEditorProps> = ({ onContentChange }) => {
+const RichTextEditor: React.FC<RichTextEditorProps> = ({ initialValue, onContentChange }) => {
   const renderElement = useCallback((props: ElementProps) => <Element {...props} />, []);
   const renderLeaf = useCallback((props: LeafProps) => <Leaf {...props} />, []);
   const editor = useMemo(() => withHistory(withReact(createEditor() as ReactEditor)), []);
@@ -24,7 +24,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ onContentChange }) => {
     <div className="slate" style={{ width: "800px" }}>
       <Slate
         editor={editor}
-        value={initialValue}
+        value={initialValue ?? blankValue}
         onChange={(value) => {
           onContentChange(value);
         }}
