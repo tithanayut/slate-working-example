@@ -4,16 +4,14 @@ For most basic use cases, looking at `pages/index.tsx` should suffice.
 
 ```tsx
 const Home: NextPage = () => {
-  const { content, setContent } = useRichTextEditor();
+  const { content, onContentChange } = useRichTextEditor(blankValue);
 
   return (
     <main style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
       <h1 style={{ textAlign: "center" }}>Slate Working Example</h1>
-      <RichTextEditor onContentChange={setContent} />
+      <RichTextEditor initialValue={blankValue} onContentChange={onContentChange} />
       <pre>{JSON.stringify(content, null, 2)}</pre>
     </main>
   );
 };
 ```
-
-Work to enhance Typescript types could be done further.

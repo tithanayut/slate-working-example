@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import RichTextEditor from "../components/editor";
-import { blankValue } from "../components/editor/constants";
 import useRichTextEditor from "../components/editor/hooks/useRichTextEditor";
+import { blankValue } from "../components/editor/constants";
 
 const Home: NextPage = () => {
   const { content, onContentChange } = useRichTextEditor(blankValue);
@@ -9,7 +9,7 @@ const Home: NextPage = () => {
   return (
     <main style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
       <h1 style={{ textAlign: "center" }}>Slate Working Example</h1>
-      <RichTextEditor initialValue={content} onContentChange={onContentChange} />
+      <RichTextEditor initialValue={blankValue} onContentChange={onContentChange} />
       <pre>{JSON.stringify(content, null, 2)}</pre>
     </main>
   );
