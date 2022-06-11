@@ -1,7 +1,7 @@
-import { BaseText, Editor } from "slate";
+import { Editor } from "slate";
 
 export const isMarkActive = (editor: Editor, format: string) => {
-  const marks = Editor.marks(editor) as Omit<BaseText, "text"> & Record<string, any>;
+  const marks = Editor.marks(editor) as Record<string, any>;
   return marks ? marks[format] === true : false;
 };
 
