@@ -7,6 +7,7 @@ const Home: NextPage = () => {
 
   return (
     <main style={{ display: "flex", justifyContent: "center" }}>
+      <h1 style={{ textAlign: "center" }}>Slate Working Example</h1>
       <RichTextEditor onContentChange={setContent} />
     </main>
   );
