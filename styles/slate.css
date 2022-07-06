@@ -3,7 +3,13 @@
 .slate {
   padding: 18px;
   background-color: #fff;
-  min-width: 600px;
+  width: 768px;
+}
+
+@media screen and (max-width: 768px) {
+  .slate {
+    width: 100vw;
+  }
 }
 
 input,

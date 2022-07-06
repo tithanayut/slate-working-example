@@ -21,7 +21,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ initialValue, onContent
   const editor = useMemo(() => withHistory(withReact(createEditor() as ReactEditor)), []);
 
   return (
-    <div className="slate" style={{ width: "800px" }}>
+    <div className="slate">
       <Slate
         editor={editor}
         value={initialValue ?? blankValue}
